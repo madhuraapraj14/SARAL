@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SARAL | Smart Access to Regional Art & Landmarks</title>
+  <meta name="description" content="Discover heritage, culture and local makers around Mira-Bhayandar.">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOGIN -->
+<section class="auth-screen" id="authScreen">
+  <div class="auth-card">
+    <div class="logo-lockup">
+      <div class="saral-logo" aria-hidden="true"><img src="logo.svg" alt=""></div>
+      <div><strong>SARAL</strong><small>Smart Access to Regional Art & Landmarks</small></div>
+    </div>
+    <div class="auth-rule"></div>
+    <p class="auth-kicker">MIRA-BHAYANDAR • CULTURE • COMMUNITY</p>
+    <h1>Come in.<br><em>The city has stories.</em></h1>
+    <p class="auth-intro">Explore places, people, traditions and handmade work from around Mira-Bhayandar.</p>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-auth="login">Log in</button>
+      <button class="auth-tab" data-auth="signup">Create account</button>
+    </div>
+
+    <form id="loginForm" class="auth-form">
+      <label>Email<input id="loginEmail" type="email" required placeholder="you@example.com"></label>
+      <label>Password<input id="loginPassword" type="password" required placeholder="Your password"></label>
+      <button class="btn btn-primary full" type="submit">Enter SARAL</button>
+      <p class="auth-message" id="loginMessage"></p>
+    </form>
+
+    <form id="signupForm" class="auth-form hidden">
+      <label>Your name<input id="signupName" type="text" required placeholder="Your name"></label>
+      <label>Email<input id="signupEmail" type="email" required placeholder="you@example.com"></label>
+      <label>Password<input id="signupPassword" type="password" minlength="8" required placeholder="Create a password (8+ characters)"></label>
+      <button class="btn btn-primary full" type="submit">Create account</button>
+      <p class="auth-message" id="signupMessage"></p>
+    </form>
+    <p class="auth-foot">Your account keeps your SARAL visit signed in on this browser.</p>
+  </div>
+</section>
+
+<!-- WEBSITE -->
+<div id="site" class="site hidden">
+<header class="site-header">
+  <nav class="nav container">
+    <a class="brand" href="#home" aria-label="SARAL home">
+      <div class="saral-logo small" aria-hidden="true"><img src="logo.svg" alt=""></div>
+      <span class="brand-copy"><strong>SARAL</strong><small>Smart Access to Regional Art & Landmarks</small></span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#explore">Explore</a><a href="#map-section">Map</a><a href="#events">Culture</a>
+      <a href="#makers">Makers</a><a href="#shop">Shop</a><a href="#about">About</a>
+    </div>
+    <div class="account-actions">
+      <span class="welcome" id="welcomeUser"></span>
+      <button class="account-btn" id="logoutBtn">Log out</button>
+      <button class="bag-btn" id="bagBtn">Bag <span id="bagCount">0</span></button>
+    </div>
+  </nav>
+</header>
+
+<main id="home">
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">MIRA-BHAYANDAR • HERITAGE • COMMUNITY</p>
+        <h1>Know the place.<br><em>Know its story.</em></h1>
+        <p>Discover real heritage landmarks, coastal communities, cultural places and local makers around Mira-Bhayandar.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="#explore">Explore SARAL</a><a class="under-link" href="#map-section">Open the map →</a></div>
+      </div>
+      <div class="hero-visual">
+        <div class="guide-panel">
+          <div class="guide-top">
+            <span class="guide-label">START HERE</span>
+            <span class="guide-count">01 — 04</span>
+          </div>
+          <h2>Four ways to<br><em>know SARAL.</em></h2>
+          <div class="guide-list">
+            <a href="#explore"><span>01</span><strong>Heritage</strong><small>Landmarks & historic places</small><b>→</b></a>
+            <a href="#map-section"><span>02</span><strong>Map</strong><small>Find places around Uttan</small><b>→</b></a>
+            <a href="#events"><span>03</span><strong>Culture</strong><small>Community & coastal life</small><b>→</b></a>
+            <a href="#makers"><span>04</span><strong>Makers</strong><small>Local craft & handmade work</small><b>→</b></a>
+          </div>
+          <div class="guide-foot"><span>SMART ACCESS</span><i></i><span>LOCAL STORIES</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro-strip"><div class="container intro-grid"><div><span class="section-number">01</span><h2>A digital guide to<br>the local story.</h2></div><p>SARAL brings heritage places, cultural life and local makers together so residents and visitors can discover the city with context.</p></div></section>
+
+  <section class="section container" id="explore">
+    <div class="section-heading"><div><span class="section-number">02</span><h2>Explore the city</h2></div><p>Places, people and traditions brought together in one simple guide.</p></div>
+    <div class="feature-grid">
+      <article class="feature-card"><span class="feature-no">01</span><span class="card-tag">HERITAGE</span><h3>Landmarks &<br>Historic Places</h3><p>Explore documented heritage locations across Uttan, Dongri and Mira-Bhayandar.</p><a href="#map-section">View locations →</a></article>
+      <article class="feature-card feature-dark"><span class="feature-no">02</span><span class="card-tag">DISCOVER</span><h3>Maps &<br>Nearby Places</h3><p>Find places on an interactive map and open directions when you are ready to visit.</p><a href="#map-section">Open map →</a></article>
+      <article class="feature-card"><span class="feature-no">03</span><span class="card-tag">COMMUNITY</span><h3>Local Makers<br>& Handcrafts</h3><p>Meet local craft businesses and browse handmade work from the community.</p><a href="#shop">Visit the shop →</a></article>
+    </div>
+  </section>
+
+  <section class="map-section" id="map-section"><div class="container">
+    <div class="section-heading"><div><span class="section-number">03</span><h2>Find it on the map</h2></div><p>Explore real places around Mira-Bhayandar. Select a place to bring it into focus.</p></div>
+    <div class="map-layout">
+      <aside class="map-sidebar"><label for="mapSearch">Search places</label><input id="mapSearch" type="search" placeholder="Try “church”, “fort” or “lighthouse”"><div class="filter-row"><button class="filter active" data-filter="All">All</button><button class="filter" data-filter="Heritage">Heritage</button><button class="filter" data-filter="Culture">Culture</button></div><div class="map-list" id="mapList"></div></aside>
+      <div id="map"></div>
+    </div>
+    <section class="transport-panel" id="transportPanel" aria-live="polite"><span class="card-tag">SARAL SMARTRoute</span><h3>Nearby public transport</h3><p id="transportIntro">Select a heritage place on the map to find nearby bus stops, railway stations, metro and ferry terminals.</p><div id="transportResults"><p class="empty-result">No destination selected yet.</p></div></section>
+  </div></section>
+
+  <section class="section container"><div class="section-heading"><div><span class="section-number">04</span><h2>Places with a story</h2></div><p>Learn a little about the places before you visit.</p></div><div class="place-grid" id="placeGrid"></div></section>
+
+  <section class="section cultural-section" id="events"><div class="container"><div class="section-heading"><div><span class="section-number">05</span><h2>Culture around Mira-Bhayandar</h2></div><p>Local traditions and community life that give the area its character.</p></div>
+    <div class="event-grid">
+      <article class="event-card"><span class="event-label">COASTAL LIFE</span><h3>Uttan Fishing Community</h3><p>Uttan is closely associated with fishing villages and a long-standing coastal way of life along the Arabian Sea.</p><div class="event-meta">Uttan • Mira-Bhayandar</div></article>
+      <article class="event-card"><span class="event-label">HERITAGE</span><h3>Portuguese-Era Churches</h3><p>Historic churches around Uttan and Dongri reflect the area's layered coastal and Portuguese-influenced history.</p><div class="event-meta">Uttan • Dongri</div></article>
+      <article class="event-card"><span class="event-label">COMMUNITY</span><h3>Traditional Crafts</h3><p>Handmade work, small makers and craft businesses form an important part of the local community economy.</p><div class="event-meta">Mira-Bhayandar</div></article>
+    </div>
+  </div></section>
+
+  <section class="makers-section" id="makers"><div class="container"><div class="section-heading"><div><span class="section-number">06</span><h2>Meet local makers</h2></div><p>Craft businesses and makers connected with the Mira-Bhayandar area.</p></div>
+    <div class="maker-grid">
+      <article class="maker-card"><div class="maker-initial">UH</div><div><span class="card-tag">HANDCRAFTS • KASHIMIRA</span><h3>Utsav Handicraft</h3><p>Mira Road East-based handicraft business offering handmade Kauna, bamboo, cane, willow and jute products.</p><p class="maker-detail"><b>Founder:</b> Pradipta Biswas</p><p class="maker-detail"><b>Area:</b> Kashi Village / Kashimira, Mira Road East</p></div></article>
+      <article class="maker-card"><div class="maker-initial">SH</div><div><span class="card-tag">ART & PAINTING • MIRA ROAD</span><h3>Sheelas Handicraft</h3><p>Mira Road-based handicraft business associated with paintings, screen art, fabric painting, candles and other craft work.</p><p class="maker-detail"><b>People listed:</b> Sheela Sharma / Dharmendra Sharma</p><p class="maker-detail"><b>Area:</b> Gokul Village, Mira Road East</p></div></article>
+      <article class="maker-card"><div class="maker-initial">TS</div><div><span class="card-tag">HANDCRAFTED FOOTWEAR • MIRA ROAD</span><h3>Thread Stories</h3><p>A Mira Road-based handcrafted footwear brand featuring juttis, flats, kolhapuris and made-to-order designs.</p><p class="maker-detail"><b>Location:</b> Gokul Village, Shanti Park, Mira Road</p></div></article>
+    </div>
+  </div></section>
+
+  <section class="section container" id="shop"><div class="section-heading"><div><span class="section-number">07</span><h2>Handmade shelf</h2></div><p>Explore handmade pieces from local makers and add something to your SARAL bag.</p></div><div class="shop-grid" id="shopGrid"></div><div class="shop-note">Handmade pieces from local makers around Mira-Bhayandar.</div></section>
+
+  <section class="about-section" id="about"><div class="container about-grid"><div><span class="section-number">08</span><h2>Why SARAL?</h2><p>SARAL brings scattered cultural information into one accessible place, helping residents and visitors discover heritage while giving local makers a wider audience.</p></div><div class="objective-list"><div><span>01</span><p><b>Promote heritage</b><br>Make local landmarks easier to discover.</p></div><div><span>02</span><p><b>Support makers</b><br>Give local craft businesses a wider digital presence.</p></div><div><span>03</span><p><b>Improve exploration</b><br>Combine maps, routes and cultural information.</p></div><div><span>04</span><p><b>Encourage responsible tourism</b><br>Connect visitors with community and place.</p></div></div></div></section>
+
+  <section class="cta container"><p class="eyebrow">SARAL • SMART ACCESS TO REGIONAL ART & LANDMARKS</p><h2>Local places.<br><em>Real stories.</em></h2><p>Explore, understand and support the cultural identity around you.</p><a class="btn btn-primary" href="#home">Back to top ↑</a></section>
+</main>
+<footer><div class="container footer-inner"><div><strong>SARAL</strong><p>Smart Access to Regional Art & Landmarks</p></div><p>Idea Lab • Information Technology • 2026–27</p></div></footer>
+
+<div class="bag-overlay" id="bagOverlay"></div><aside class="bag-drawer" id="bagDrawer"><div class="bag-head"><h3>Your SARAL Bag</h3><button id="closeBag">×</button></div><div id="bagItems"></div><div class="bag-total"><span>Total</span><strong id="bagTotal">₹0</strong></div><button class="btn btn-primary full" id="checkoutBtn">Continue to checkout</button></aside>
+<div class="toast" id="toast"></div>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js'"></script>
+<script src="script.js"></script>
+</body>
+</html>
